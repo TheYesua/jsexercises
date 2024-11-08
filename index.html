@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Jesus J Cantero">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Exercises Log</title>
+</head>
+<body>
+<h1>JS Exercises Log</h1>
+<table id="exerciseTable">
+    <thead>
+    <tr>
+        <th>Nº</th>
+        <th>Date</th>
+        <th>Exercises</th>
+        <th>Links</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Here I will put the entries, and Nº will be automatically generated -->
+    </tbody>
+</table>
+
+<script>
+    // Array de ejemplo de ejercicios; puedes modificarlo o conectarlo con una fuente de datos si quieres
+    const exercises = [
+        { date: "2024-11-08", description: "Article", link: "https://theyesua.github.io/webprojects/" },
+        { date: "2024-11-09", description: "Calculator", link: "https://theyesua.github.io/webprojects/calculator.html" }
+    ];
+
+    // Función para añadir los ejercicios a la tabla
+    function loadExercises() {
+        const tableBody = document.getElementById('exerciseTable').getElementsByTagName('tbody')[0];
+        exercises.forEach((exercise, index) => {
+            const row = document.createElement('tr');
+
+            const numberCell = document.createElement('td');
+            numberCell.textContent = index + 1;
+            row.appendChild(numberCell);
+
+            const dateCell = document.createElement('td');
+            dateCell.textContent = exercise.date;
+            row.appendChild(dateCell);
+
+            const descCell = document.createElement('td');
+            descCell.textContent = exercise.description;
+            row.appendChild(descCell);
+
+            const linkCell = document.createElement('td');
+            const link = document.createElement('a');
+            link.href = exercise.link;
+            link.textContent = "View";
+            link.target = "_blank";
+            linkCell.appendChild(link);
+            row.appendChild(linkCell);
+
+            tableBody.appendChild(row);
+        });
+    }
+
+    window.onload = loadExercises;
+</script>
+</body>
+</html>
