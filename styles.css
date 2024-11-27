@@ -8,6 +8,37 @@ h1 {
     text-align: center;
 }
 
+#iframeContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#iframe {
+    width: 90%;
+    max-width: 1200px; /* Ancho máximo para grandes pantallas */
+    height: 500px;
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Opcional: esquinas redondeadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Opcional: sombra para destacar */
+    display: none;
+}
+
+#clearButton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#clearButton:hover {
+    background-color: #45a049;
+}
+
+
 table {
     width: 100%;
     border-collapse: collapse;

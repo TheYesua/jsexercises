@@ -16,6 +16,7 @@
         <th>Date</th>
         <th>Exercises</th>
         <th>Links</th>
+        <th>Description</th>
     </tr>
     </thead>
     <tbody>
@@ -23,14 +24,19 @@
     </tbody>
 </table>
 
+<!-- Container for the iframe -->
+<button id="clearButton" style="display: none; margin-top: 10px;">Clear</button>
+<div id="iframeContainer" style="margin-top: 20px; text-align: center;">
+    <iframe id="iframe" style="width: 90%; height: 500px; border: 1px solid #ddd; display: none;"></iframe>
+</div>
 <script>
     const exercises = [
-        { date: "2024-11-08", description: "Article", link: "https://theyesua.github.io/jjclarticle/" },
-        { date: "2024-11-09", description: "Min-Max Validator", link: "https://theyesua.github.io/minmaxvalidator" },
-        { date: "2024-11-27", description: "RGB-Selector", link: "https://theyesua.github.io/RGB-selector/rgbSelector.html" },
-        { date: "2024-11-27", description: "Calculator", link: "https://theyesua.github.io/calculator/calculator.html" },
-        { date: "2024-11-27", description: "Simple Calculator", link: "https://theyesua.github.io/calculator/simple_calculator.html" },
-        { date: "2024-11-27", description: "Bachelor summary", link: "https://theyesua.github.io/bachelor-summary" }
+        { date: "2024-11-08", name: "Article", link: "https://theyesua.github.io/jjclarticle/", description: "Main document with weekly tasks" },
+        { date: "2024-11-09", name: "Min-Max Validator", link: "https://theyesua.github.io/minmaxvalidator", description: "Validate if one value is bigger than other" },
+        { date: "2024-11-27", name: "RGB-Selector", link: "https://theyesua.github.io/RGB-selector/rgbSelector.html", description: "Quick RGB selector wirh radius slidders" },
+        { date: "2024-11-27", name: "Calculator", link: "https://theyesua.github.io/calculator/calculator.html", description: "A fancy calculator" },
+        { date: "2024-11-27", name: "Simple Calculator", link: "https://theyesua.github.io/calculator/simple_calculator.html", description: "Very simple calculator with basic functions" },
+        { date: "2024-11-27", name: "Bachelor summary", link: "https://theyesua.github.io/bachelor-summary", description: "My CV summarized" }
     ];
 
     function loadExercises() {
@@ -46,21 +52,46 @@
             dateCell.textContent = exercise.date;
             row.appendChild(dateCell);
 
+            const nameCell = document.createElement('td');
+            nameCell.textContent = exercise.name;
+            row.appendChild(nameCell);
+
+            const linkCell = document.createElement('td');
+            const link = document.createElement('a');
+            link.href = "#";
+            link.textContent = "View";
+            link.onclick = () => loadIframe(exercise.link);
+            linkCell.appendChild(link);
+            row.appendChild(linkCell);
+
             const descCell = document.createElement('td');
             descCell.textContent = exercise.description;
             row.appendChild(descCell);
 
-            const linkCell = document.createElement('td');
-            const link = document.createElement('a');
-            link.href = exercise.link;
-            link.textContent = "View";
-            link.target = "_blank";
-            linkCell.appendChild(link);
-            row.appendChild(linkCell);
-
             tableBody.appendChild(row);
         });
     }
+
+    function loadIframe(url) {
+        const iframe = document.getElementById('iframe');
+        const clearButton = document.getElementById('clearButton');
+
+        iframe.src = url;
+        iframe.style.display = "block";
+        clearButton.style.display = "inline-block";
+    }
+
+    function clearIframe() {
+        const iframe = document.getElementById('iframe');
+        const clearButton = document.getElementById('clearButton');
+
+        iframe.src = ""; // Limpia el contenido del iframe
+        iframe.style.display = "none";
+        clearButton.style.display = "none";
+    }
+
+    document.getElementById('clearButton').onclick = clearIframe;
+
 
     window.onload = loadExercises;
 </script>
