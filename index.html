@@ -24,13 +24,14 @@
 </table>
 
 <script>
-    // Array de ejemplo de ejercicios; puedes modificarlo o conectarlo con una fuente de datos si quieres
     const exercises = [
-        { date: "2024-11-08", description: "Article", link: "https://theyesua.github.io/webprojects/" },
-        { date: "2024-11-09", description: "Calculator", link: "https://theyesua.github.io/webprojects/calculator.html" }
+        { date: "2024-11-08", description: "Article", link: "https://theyesua.github.io/jjclarticle/" },
+        { date: "2024-11-09", description: "Min-Max Validator", link: "https://theyesua.github.io/minmaxvalidator" },
+        { date: "2024-11-27", description: "RGB-Selector", link: "https://theyesua.github.io/RGB-selector/rgbSelector.html" },
+        { date: "2024-11-27", description: "Calculator", link: "https://theyesua.github.io/calculator/calculator.html" },
+        { date: "2024-11-27", description: "Bachelor summary", link: "https://theyesua.github.io/bachelor-summary" }
     ];
 
-    // Función para añadir los ejercicios a la tabla
     function loadExercises() {
         const tableBody = document.getElementById('exerciseTable').getElementsByTagName('tbody')[0];
         exercises.forEach((exercise, index) => {
